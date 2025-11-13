@@ -1,3 +1,4 @@
 louislam/uptime-kuma:2
 henrygd/beszel
+henrygd/beszel-agent
 cloudflare/cloudflared:latest
