@@ -1,5 +1,5 @@
 louislam/uptime-kuma:2
-louislam/uptime-kuma:slim
+louislam/uptime-kuma:2-slim
 henrygd/beszel
 henrygd/beszel-agent
 cloudflare/cloudflared:latest
