@@ -2,57 +2,52 @@
 
 使用 Github Action 将 Docker 镜像转存到阿里云私有仓库，供大陆地区阿里云服务器使用
 
-- 支持 DockerHub, gcr.io, k8s.io, ghcr.io等任意仓库
+- 支持 `DockerHub` `gcr.io` `k8s.io` `ghcr.io` 等仓库
 - 支持最大40GB的大型镜像
-- 使用阿里云的官方线路，速度
+- 使用阿里云的官方线路
 
 ## 使用方式
-
 ### 配置阿里云
-登录阿里云容器镜像服务<br>
-https://cr.console.aliyun.com/<br>
-启用个人实例，创建一个命名空间（**ALIYUN_NAME_SPACE**）
-![](/doc/命名空间.png)
+1. 登录阿里云容器镜像服务
 
-访问凭证–>获取环境变量<br>
-用户名（**ALIYUN_REGISTRY_USER**)<br>
-密码（**ALIYUN_REGISTRY_PASSWORD**)<br>
-仓库地址（**ALIYUN_REGISTRY**）<br>
+https://cr.console.aliyun.com/
 
-![](/doc/用户名密码.png)
+3. 启用个人实例，创建一个命名空间 (**ALIYUN_NAME_SPACE**)
+
+4. 访问凭证–>获取环境变量
+- 用户名 (**ALIYUN_REGISTRY_USER**)
+- 密码 (**ALIYUN_REGISTRY_PASSWORD**)
+- 仓库地址 (**ALIYUN_REGISTRY**)
 
 ### 启动Action
 进入您自己的项目，点击Action，启用Github Action功能
 
 ### 配置环境变量
+1. 进入 **GitHub Settings > Secret and variables > Actions > New Repository secret**
 
-进入 **GitHub Settings > Secret and variables > Actions > New Repository secret**
-![](doc/配置环境变量.png)
-将上一步的**四个值**：
+2. 将上一步的**四个值**：
 - `ALIYUN_NAME_SPACE`
 - `ALIYUN_REGISTRY_USER`
 - `ALIYUN_REGISTRY_PASSWORD`
 - `ALIYUN_REGISTRY`
-配置成对应的环境变量
+配置成对应的环境变量。
 
 ### 添加镜像
-打开images.txt文件，添加需要的镜像 
+打开 **images.txt** 文件，添加需要的镜像。
 
-- 可以加tag，也可以不用(默认latest)
-- 可添加 --platform=xxxxx 的参数指定镜像架构
+- 可以加 tag，也可以不用 (默认latest)
+- 可添加 `--platform=xxxxx` 的参数指定镜像架构
 - 可使用 k8s.gcr.io/kube-state-metrics/kube-state-metrics 格式指定私库
-- 可使用 #开头作为注释
+- 可使用 `#` 开头作为注释
 
-![](doc/images.png)
 文件提交后将自动进入Github Action构建
 
 ### 使用镜像
-回到阿里云，镜像仓库，点击任意镜像，可查看镜像状态。(可以改成公开，拉取镜像免登录)
-![](doc/开始使用.png)
+回到阿里云，镜像仓库，点击任意镜像，可查看镜像状态。
 
-在国内服务器pull镜像, 例如：
+在国内服务器拉取镜像, 例如：
 ```bash
-docker pull registry.cn-hangzhou.aliyuncs.com/shrimp-images/alpine
+docker pull registry.cn-hangzhou.aliyuncs.com/images/alpine
 ```
 
 `registry.cn-hangzhou.aliyuncs.com` 即 `ALIYUN_REGISTRY` (阿里云仓库地址)
@@ -60,23 +55,19 @@ docker pull registry.cn-hangzhou.aliyuncs.com/shrimp-images/alpine
 `alpine` 即阿里云中显示的镜像名
 
 ### 多架构
-需要在images.txt中用 --platform=xxxxx手动指定镜像架构
+需要在 images.txt 中用 `--platform=xxxxx` 手动指定镜像架构
 指定后的架构会以前缀的形式放在镜像名字前面
-![](doc/多架构.png)
 
 ### 镜像重名
 程序自动判断是否存在名称相同, 但是属于不同命名空间的情况。
 如果存在，会把命名空间作为前缀加在镜像名称前。
+
 例如:
 ```
 xhofe/alist
 xiaoyaliu/alist
 ```
-![](doc/镜像重名.png)
 
 ### 定时执行
 修改/.github/workflows/docker.yaml文件
-添加 schedule即可定时执行(此处cron使用UTC时区)
-![](doc/定时执行.png)
-
-> 原作者：[技术爬爬虾](https://github.com/tech-shrimp/me)
+添加 schedule 即可定时执行(此处cron使用UTC时区)
