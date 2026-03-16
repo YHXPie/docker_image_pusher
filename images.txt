@@ -1,4 +1,4 @@
-# louislam/uptime-kuma:2
+louislam/uptime-kuma:2
 louislam/uptime-kuma:2-slim
 henrygd/beszel
 henrygd/beszel-agent
