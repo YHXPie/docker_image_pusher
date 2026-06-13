@@ -2,3 +2,7 @@ louislam/uptime-kuma:2
 louislam/uptime-kuma:2-slim
 henrygd/beszel
 henrygd/beszel-agent
+remnawave/backend:2
+remnawave/subscription-page:latest
+postgres:17.6
+valkey/valkey:9-alpine
