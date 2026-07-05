@@ -6,3 +6,4 @@ remnawave/backend:2
 remnawave/subscription-page:latest
 postgres:17.6
 valkey/valkey:9-alpine
+lscr.io/linuxserver/chromium:latest
