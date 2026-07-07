@@ -7,4 +7,3 @@ remnawave/subscription-page:latest
 postgres:17.6
 valkey/valkey:9-alpine
 lscr.io/linuxserver/chromium:latest
-lscr.io/linuxserver/firefox:latest
