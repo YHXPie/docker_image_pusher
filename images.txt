@@ -1,5 +1,6 @@
 louislam/uptime-kuma:2
 louislam/uptime-kuma:2-slim
-henrygd/beszel
-henrygd/beszel-agent
+henrygd/beszelr:latest
+henrygd/beszel-agentr:latest
 lscr.io/linuxserver/chromium:latest
+nickfedor/watchtower:latest
